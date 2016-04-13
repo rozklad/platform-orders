@@ -1,0 +1,12 @@
+.dropdown-cart-area {
+	position: relative;
+}
+.dropdown-cart.open {
+	display: block;
+	width: 100%;
+} 
+.dropdown-cart.dropdown-menu {
+	padding-top: 0;
+	padding-bottom: 0;
+	font-size: 12px;
+}
