@@ -2,7 +2,7 @@
 
 use Cart;
 use Asset;
-use Sanatorium\Shoppricing\Models\Currency;
+use Sanatorium\Pricing\Models\Currency;
 
 class Hooks {
 

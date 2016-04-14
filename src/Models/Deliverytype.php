@@ -4,7 +4,7 @@ use Cartalyst\Attributes\EntityInterface;
 use Illuminate\Database\Eloquent\Model;
 use Platform\Attributes\Traits\EntityTrait;
 use Cartalyst\Support\Traits\NamespacedEntityTrait;
-use Sanatorium\Shoppricing\Traits\PriceableTrait;
+use Sanatorium\Pricing\Traits\PriceableTrait;
 
 class Deliverytype extends Model implements EntityInterface {
 

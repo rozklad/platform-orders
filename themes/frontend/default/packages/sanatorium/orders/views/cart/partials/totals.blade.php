@@ -42,7 +42,7 @@
 						<tr class="row-delivery">
 							<td class="text-right">{{ trans('sanatorium/orders::cart.data.delivery_price') }}</td>
 							@if ( Cart::getMetaData('shipping_multiplier')  ) 
-							<td data-delivery-price>{{ Sanatorium\Shoppricing\Models\Currency::format( (int)$deliverytype->price_vat*Cart::getMetaData('shipping_multiplier') ) }}</td>
+							<td data-delivery-price>{{ Sanatorium\Pricing\Models\Currency::format( (int)$deliverytype->price_vat*Cart::getMetaData('shipping_multiplier') ) }}</td>
 							@else
 							<td data-delivery-price>{{ $deliverytype->price_vat }}</td>
 							@endif
@@ -53,7 +53,7 @@
 						<tr class="row-delivery">
 							<td class="text-right">{{ trans('sanatorium/orders::cart.data.delivery_price') }}</td>
 							@if ( Cart::getMetaData('shipping_multiplier')  ) 
-							<td data-delivery-price>{{ Sanatorium\Shoppricing\Models\Currency::format( (int)$deliverytype->price_vat*Cart::getMetaData('shipping_multiplier') ) }}</td>
+							<td data-delivery-price>{{ Sanatorium\Pricing\Models\Currency::format( (int)$deliverytype->price_vat*Cart::getMetaData('shipping_multiplier') ) }}</td>
 							@else
 							<td data-delivery-price>{{ $deliverytype->price_vat }}</td>
 							@endif

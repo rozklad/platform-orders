@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 use Platform\Attributes\Traits\EntityTrait;
 use Cartalyst\Support\Traits\NamespacedEntityTrait;
 use Sanatorium\Status\Traits\StatusableTrait;
-use Sanatorium\Shoppricing\Traits\PriceableTrait;
+use Sanatorium\Pricing\Traits\PriceableTrait;
 
 class Order extends Model implements EntityInterface {
 

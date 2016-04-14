@@ -113,7 +113,7 @@ $(function(){
 								{{ $deliverytype->delivery_title }}
 								@if ( !$deliverytype->free )
 									@if ( isset($shipping_multiplier) ) 
-									- <strong>{{ Sanatorium\Shoppricing\Models\Currency::format( (int)$deliverytype->price_vat*$shipping_multiplier ) }}</strong>
+									- <strong>{{ Sanatorium\Pricing\Models\Currency::format( (int)$deliverytype->price_vat*$shipping_multiplier ) }}</strong>
 									@else
 									- <strong>{{ $deliverytype->price_vat }}</strong>
 									@endif

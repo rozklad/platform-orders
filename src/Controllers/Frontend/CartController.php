@@ -8,7 +8,7 @@ use Event;
 use Platform\Foundation\Controllers\Controller;
 use Product;
 use Sentinel;
-use Sanatorium\Shoppricing\Models\Currency;
+use Sanatorium\Pricing\Models\Currency;
 use Sanatorium\Orders\Models\Customer;
 use Sanatorium\Orders\Repositories\Order\OrderRepositoryInterface;
 use Sanatorium\Orders\Repositories\Deliverytype\DeliverytypeRepositoryInterface;
