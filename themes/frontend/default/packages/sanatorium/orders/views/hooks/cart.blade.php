@@ -32,7 +32,7 @@ var cart_url = {
 {{-- Cart script --}}
 {{ Asset::queue('cart', 'sanatorium/orders::js/cart.js', 'jquery') }}
 
-<div class="dropdown-cart-area">
+<div class="{{ $class }} dropdown-cart-area">
 	<div class="btn-group btn-group-justified" role="group">
 		<a class="btn btn-default btn-cart-total btn-lg" href="#">
 			{{ Product::formatGeneric(Cart::total()) }}

@@ -9,11 +9,11 @@ class Hooks {
 	/**
 	 * Cart widget
 	 */
-	public function cart()
+	public function cart($class = null)
 	{
 		extract($this->getCartData());
 
-		return view('sanatorium/orders::hooks/cart', compact('cart', 'items', 'quantity'));
+		return view('sanatorium/orders::hooks/cart', compact('cart', 'items', 'quantity', 'class'));
 	}
 
 	/**
