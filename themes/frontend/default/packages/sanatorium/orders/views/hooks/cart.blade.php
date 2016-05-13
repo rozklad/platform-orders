@@ -32,18 +32,13 @@ var cart_url = {
 {{-- Cart script --}}
 {{ Asset::queue('cart', 'sanatorium/orders::js/cart.js', 'jquery') }}
 
-<div class="{{ $class }} dropdown-cart-area">
-	<div class="btn-group btn-group-justified" role="group">
-		<a class="btn btn-default btn-cart-total btn-lg" href="#">
-			{{ Product::formatGeneric(Cart::total()) }}
-		</a>
-		<a class="btn btn-default btn-cart-dropdown btn-lg dropdown-toggle" href="#" data-target="#dropdown-cart" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			<span class="title visible-xs">{{ trans('sanatorium/orders::cart.title') }}</span>
-			<i class="fa fa-shopping-cart"></i>
-			<span class="caret"></span>
-			<span class="badge">{{ $quantity }}</span>
-		</a>
-	</div>
+<div class="{{ $class }} dropdown-cart-area hidden-xs">
+	<a class="btn btn-default btn-cart-dropdown btn-lg dropdown-toggle" href="#" data-target="#dropdown-cart" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		<i class="fa fa-shopping-cart"></i>
+		<span class="caret"></span>
+		<span class="badge">{{ $quantity }}</span>
+		<span class="cart-title">{{ trans('sanatorium/orders::cart.title') }}</span>
+	</a>
 	<div class="dropdown-cart dropdown-menu panel panel-default" id="dropdown-cart">
 		@include('sanatorium/orders::cart/partials/summary_lite')
 		<div class="panel-footer">
@@ -61,4 +56,10 @@ var cart_url = {
 			</div>
 		</div>
 	</div>
+</div>
+
+<div class="{{ $class }} mobile-cart-area visible-xs">
+	<a class="btn btn-success btn-cart-show" href="{{ route('sanatorium.orders.cart.index') }}">
+		{{ trans('sanatorium/orders::cart.title') }}
+	</a>
 </div>
