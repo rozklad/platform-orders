@@ -32,8 +32,8 @@ var cart_url = {
 {{-- Cart script --}}
 {{ Asset::queue('cart', 'sanatorium/orders::js/cart.js', 'jquery') }}
 
-<div class="{{ $class }} dropdown-cart-area hidden-xs">
-	<a class="btn btn-default btn-cart-dropdown btn-lg dropdown-toggle" href="#" data-target="#dropdown-cart" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+<div class="{{ $class }} dropdown-cart-area hidden-xs {{ $quantity > 0 ? 'not-empty' : 'empty' }}">
+	<a class="btn btn-default btn-cart-dropdown dropdown-toggle" href="#" data-target="#dropdown-cart" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 		<i class="fa fa-shopping-cart"></i>
 		<span class="caret"></span>
 		<span class="badge">{{ $quantity }}</span>
