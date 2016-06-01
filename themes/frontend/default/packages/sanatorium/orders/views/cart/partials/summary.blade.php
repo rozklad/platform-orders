@@ -50,7 +50,8 @@ $(function(){
 });
 </script>
 @stop
-	
+
+
 	<div class="panel panel-default cart-panel cart-part">
 
 		<header class="panel-heading">

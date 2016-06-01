@@ -11,7 +11,7 @@ class Customer extends User {
 	/**
 	 * {@inheritDoc}
 	 */
-	protected $table = 'shop_customers';
+	protected $table = 'customers';
 
 
 	/**
