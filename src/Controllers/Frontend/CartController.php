@@ -330,10 +330,23 @@ class CartController extends Controller {
 	{
 		$currency = Currency::getPrimaryCurrency();
 
+		$products_price = 0;
+		$delivery_price = 0;
+		$total_price = 0;
+
+		// Sometimes the currency is not available here
+		// @todo: come up with elegant solution
+		if ( is_object($currency) )
+		{
+			$products_price = Cart::total() < 0 ? Converter::to('currency.'.$currency->code)->value(0)->format($currency->short_format) : Converter::to('currency.'.$currency->code)->value(Cart::total())->format($currency->short_format);
+			$delivery_price = Cart::total() < 0 ? Converter::to('currency.'.$currency->code)->value(0)->format($currency->short_format) : Converter::to('currency.'.$currency->code)->value($this->deliveryPrice())->format($currency->short_format);
+			$total_price = Cart::total() < 0 ? Converter::to('currency.'.$currency->code)->value(0)->format($currency->short_format) : Converter::to('currency.'.$currency->code)->value(Cart::total() + $this->deliveryPrice())->format($currency->short_format);
+		}
+
 		return [
-			'products-price'	=> Cart::total() < 0 ? Converter::to('currency.'.$currency->code)->value(0)->format($currency->short_format) : Converter::to('currency.'.$currency->code)->value(Cart::total())->format($currency->short_format),
-			'delivery-price'	=> Cart::total() < 0 ? Converter::to('currency.'.$currency->code)->value(0)->format($currency->short_format) : Converter::to('currency.'.$currency->code)->value($this->deliveryPrice())->format($currency->short_format),
-			'total-price'		=> Cart::total() < 0 ? Converter::to('currency.'.$currency->code)->value(0)->format($currency->short_format) : Converter::to('currency.'.$currency->code)->value(Cart::total() + $this->deliveryPrice())->format($currency->short_format)
+			'products-price'	=> $products_price,
+			'delivery-price'	=> $delivery_price,
+			'total-price'		=> $total_price
 		];
 	}
 
@@ -450,6 +463,13 @@ class CartController extends Controller {
 		if ( !isset($addresses['dodaci']) )
 			return redirect()->back();
 
+		$currency_id = 0;
+
+		$active_currency = Currency::getActiveCurrency();
+
+		if ( is_object($active_currency) )
+			$currency_id = $active_currency->id;
+
 		$order_data = [
 			'delivery_type_id' 		=> $delivery_type_id,
 			'payment_type_id'  		=> $payment_type_id,
@@ -457,7 +477,7 @@ class CartController extends Controller {
 			'address_delivery_id' 	=> $addresses['dodaci']->id,
 			'cart'					=> Cart::serialize(),
 			'order_email'			=> request()->get('order_email'),
-			'currency_id'			=> Currency::getActiveCurrency()->id
+			'currency_id'			=> $currency_id
 		];
 
 		// Identify user

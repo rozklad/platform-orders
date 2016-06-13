@@ -68,7 +68,7 @@ $(function(){
 	@if ( $prices['total'] < 5000 )
 	<div class="alert alert-info">
 		<p>{{ trans('sanatorium/orders::cart.alerts.delivery_not_free', ['from' => '5000 Kč']) }}</p>
-		@if ( $prices['total'] > 3000 )
+		@if ( $prices['total'] > 3000 && is_object($currency) )
 			<p>{!! trans('sanatorium/orders::cart.alerts.delivery_free_remains', ['remains' => Converter::to('currency.'.$currency->code)->value(5000 - $prices['total'])->format($currency->short_format)]) !!}</p>
 		@endif
 	</div>

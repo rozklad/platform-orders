@@ -67,7 +67,7 @@ return [
 	|
 	*/
 
-	'version' => '0.1.7',
+	'version' => '0.1.8',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -473,6 +473,8 @@ return [
 	*/
 
 	'seeds' => [
+
+		'Sanatorium\Orders\Database\Seeds\DefaultTableSeeder',
 
 	],
 

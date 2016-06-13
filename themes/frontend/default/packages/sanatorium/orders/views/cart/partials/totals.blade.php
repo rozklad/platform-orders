@@ -33,10 +33,12 @@
 			
 			<table class="table table-totals">
 				<tbody>
+					@if ( is_object($currency) )
 					<tr class="row-subtotal">
 						<td class="text-right">{{ trans('sanatorium/orders::cart.data.subtotal') }}</td>
 						<td data-total-price>{{ Converter::to('currency.'.$currency->code)->value($prices['subtotal'])->format($currency->short_format) }}</td>
 					</tr>
+					@endif
 					@if ( isset($order) )
 						@if ( $deliverytype = $order->deliverytype )
 						<tr class="row-delivery">
@@ -60,10 +62,12 @@
 						</tr>
 						@endif
 					@endif
+					@if ( is_object($currency) )
 					<tr class="row-total">
 						<td class="text-right">{{ trans('sanatorium/orders::cart.data.total') }}</td>
 						<td data-products-price>{{ Converter::to('currency.'.$currency->code)->value(Cart::total())->format($currency->short_format) }}</td>
 					</tr>
+					@endif
 				</tbody>
 			</table>
 
