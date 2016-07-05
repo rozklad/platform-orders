@@ -6,7 +6,6 @@ class PaymentServiceRepository
 
     public function registerService($service = null)
     {
-        //$class = str_replace("\\", "\\\\", get_class($service));
         $this->services[$service] = $service;
     }
 
