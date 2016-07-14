@@ -67,7 +67,7 @@ return [
 	|
 	*/
 
-	'version' => '0.2.0',
+	'version' => '0.2.1',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -424,7 +424,7 @@ return [
 		{
 			Route::get('/', ['as' => 'sanatorium.orders.customers.index', 'uses' => 'CustomersController@index']);
 		});
-
+			/*
 					Route::group([
 				'prefix'    => admin_uri().'/orders/orderstatuses',
 				'namespace' => 'Sanatorium\Orders\Controllers\Admin',
@@ -443,6 +443,7 @@ return [
 
 				Route::delete('{id}', ['as' => 'admin.sanatorium.orders.orderstatuses.delete', 'uses' => 'OrderstatusesController@delete']);
 			});
+			*/
 
 		Route::group([
 			'prefix'    => 'orders/orderstatuses',
