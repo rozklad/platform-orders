@@ -586,9 +586,6 @@ class CartController extends Controller {
 		if ( $order->status->id == config('sanatorium-orders.default_order_status') && config('sanatorium-orders.cart_mode') == 'steps' )
 			return redirect()->to('/');
 
-		// Clear cart
-		Cart::clear();
-
 		// Set status to default order status
 		$order->statuses()->sync([ config('sanatorium-orders.default_order_status') ]);
 
@@ -628,6 +625,9 @@ class CartController extends Controller {
 		
 		if ( request()->has('shipping_multiplier') )
 			$shipping_multiplier = request()->get('shipping_multiplier');
+
+        // Clear cart
+        Cart::clear();
 
 		return view('sanatorium/orders::cart/actions/placed', compact('order', 'payment_online', 'payment_success', 'shipping_multiplier'));
 	}
